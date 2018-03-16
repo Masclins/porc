@@ -1,7 +1,8 @@
 (ns p.trio
   (:require [precalculated :as precalc]
             [p.calc :as calc]
-            [p.four :as four])
+            [p.four :as four]
+            [p.full :as full])
   (:gen-class))
 
 (defn p-valued
@@ -11,10 +12,9 @@
         draws (count changed)
         in-deck (- 4 in-hand (calc/count-value changed value))]
     (cond (or (> needed draws)
-              (> needed in-deck)
-              (< needed 0))
+              (> needed in-deck))
           0
-          (= needed 0)
+          (<= needed 0)
           (- 1 (four/p-valued hand changed value))
           :else
           (/ (* (calc/C in-deck needed)
@@ -28,6 +28,7 @@
     (if (empty? value)
       p
       (recur
-        (+ p (p-valued hand changed (first value)))
+        (+ p (p-valued hand changed (first value))
+             (- (full/p-trio-valued hand changed (first value))))
         (rest value)))))
           
