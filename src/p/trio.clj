@@ -6,9 +6,10 @@
 
 (defn p-valued
   [hand changed value]
-  (let [needed (- 3 (calc/count-value hand value))
+  (let [in-hand (calc/count-value hand value)
+        needed (- 3 in-hand)
         draws (count changed)
-        in-deck (+ 1 (- needed (calc/count-value changed value)))]
+        in-deck (- 4 in-hand (calc/count-value changed value))]
     (cond (or (> needed draws)
               (> needed in-deck)
               (< needed 0))
@@ -22,11 +23,11 @@
 
 (defn p
   [hand changed]
-  (loop [p-max 0
+  (loop [p 0
          value (range 13)]
     (if (empty? value)
-      p-max
+      p
       (recur
-        (max p-max (p-valued hand changed (first value)))
+        (+ p (p-valued hand changed (first value)))
         (rest value)))))
           
