@@ -35,7 +35,6 @@
           (+ p (p-valued hand changed trio-value (first value))))
         (rest value)))))
 
-
 (defn p
   [hand changed]
   (loop [p 0
@@ -45,4 +44,15 @@
       (recur
         (+ p (p-trio-valued hand changed (first value)))
         (rest value)))))
-          
+
+(defn p-pair-valued
+  [hand changed pair-value]
+  (loop [p 0
+         value (range 13)]
+    (if (empty? value)
+      p
+      (recur
+        (if (= (first value) pair-value)
+          p
+          (+ p (p-valued hand changed (first value) pair-value)))
+        (rest value)))))
