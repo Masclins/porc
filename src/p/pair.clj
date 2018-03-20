@@ -22,10 +22,10 @@
 
 (defn p
   ([hand changed]
-    (p hand changed 9))
-  ([hand changed min-value]
+    (p hand changed 10))
+  ([hand changed min-value] ; 0 is Ace and will always count
     (loop [p 0
-           value (range min-value 13)]
+           value (concat [0] (range min-value 13))]
       (if (empty? value)
         p
         (recur
