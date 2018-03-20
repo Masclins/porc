@@ -1,10 +1,12 @@
 (ns configs.game-definition)
 
-(def suit-num 4)
-
-(def values-num 13)
-
-(def deck-num (* suit-num values-num))
-
-(def hand-num 5)
-
+(def prize-table
+  {:royal 800
+   :strflush 50
+   :four 25
+   :full 9
+   :flush 6
+   :straight 4
+   :trio 3
+   :dpair 2
+   :pair 1})
