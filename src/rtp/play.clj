@@ -1,6 +1,6 @@
 (ns rtp.play
   (:require [configs.game-definition :as game-def]
-            [precalculated :as precalc]
+            [precalc.combinations :as comb]
             [p.royal :as royal]
             [p.strflush :as strflush]
             [p.four :as four]
@@ -32,7 +32,7 @@
   "Returns expected payoff given a hand. It finds best changing option"
   [hand]
   (loop [rtp 0
-         comb precalc/possiblehands]
+         comb comb/possiblehands]
     (if (empty? comb)
       rtp
       (recur

@@ -1,5 +1,5 @@
 (ns p.dpair
-  (:require [precalculated :as precalc]
+  (:require [precalc.combinations :as comb]
             [p.calc :as calc])
   (:gen-class))
 
@@ -20,7 +20,7 @@
       (/ (* (calc/C in-deck1 needed1)
             (calc/C in-deck2 needed2)
             (calc/C (- 47 in-deck1 in-deck2) (- draws needed1 needed2)))
-         (precalc/comb47 draws)))))
+         (comb/comb47 draws)))))
 
 (defn p
   "Returns probability of Double Pair given kept and changed cards"

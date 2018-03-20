@@ -1,5 +1,5 @@
 (ns p.four
-  (:require [precalculated :as precalc]
+  (:require [precalc.combinations :as comb]
             [p.calc :as calc])
   (:gen-class))
 
@@ -17,7 +17,7 @@
           1
           :else
           (/ (calc/C (- 47 in-deck) (- draws needed))
-             (precalc/comb47 draws)))))
+             (comb/comb47 draws)))))
 
 (defn p
   "Returns probability of Four of a Kind given kept and changed cards"

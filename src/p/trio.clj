@@ -1,5 +1,5 @@
 (ns p.trio
-  (:require [precalculated :as precalc]
+  (:require [precalc.combinations :as comb]
             [p.calc :as calc]
             [p.full :as full])
   (:gen-class))
@@ -16,7 +16,7 @@
       0
       (- (/ (* (calc/C in-deck needed)
                (calc/C (- 47 in-deck) (- draws needed)))
-            (precalc/comb47 draws))
+            (comb/comb47 draws))
          (full/p-trio-valued hand changed value)))))
 
 (defn p

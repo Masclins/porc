@@ -1,5 +1,5 @@
 (ns p.flush
-  (:require [precalculated :as precalc]
+  (:require [precalc.combinations :as comb]
             [p.calc :as calc]
             [p.royal :as royal]
             [p.strflush :as strflush])
@@ -15,7 +15,7 @@
     (if (> needed draws)
         0
         (- (/ (calc/C in-deck needed)
-              (precalc/comb47 draws))
+              (comb/comb47 draws))
            (royal/p-suited hand changed suit)
            (strflush/p-suited hand changed suit)))))
 

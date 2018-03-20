@@ -1,5 +1,5 @@
 (ns p.royal
-  (:require [precalculated :as precalc]
+  (:require [precalc.combinations :as comb]
             [p.calc :as calc])
   (:gen-class))
 
@@ -33,7 +33,7 @@
           0
           :else
           (/ 1
-             (precalc/comb47 draws)))))
+             (comb/comb47 draws)))))
 
 
 (defn p
