@@ -32,4 +32,12 @@
           (and (> rtp 0.823681) (< rtp 0.823683))))
     (is (let [rtp (play/find-best-rtp {:values [10 9 10 6 0]
                                        :suits  [0 1 2 2 2]})]
-          (and (> rtp 1.536539) (< rtp 1.536541))))))
+          (and (> rtp 1.536539) (< rtp 1.536541))))
+    (is (let [rtp (play/find-best-rtp {:values [1 2 5 7 12]
+                                       :suits  [0 1 2 3 0]})]
+          (and (> rtp 0.472401) (< rtp 0.472403))))
+    (is (let [rtp (play/find-best-rtp {:values [1 1 0 12 11]
+                                       :suits  [1 0 0 0 0]})]
+          (and (> rtp 1.386678) (< rtp 1.38668))))))
+    
+    
