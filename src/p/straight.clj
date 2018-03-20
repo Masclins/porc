@@ -5,14 +5,10 @@
             [p.strflush :as strflush])
   (:gen-class))
 
-(defn count-contains
-      [elem collection]
-      (count (filter #(= elem %) collection)))
-
 (defn count-values
       [values reference]
       (map
-        #(count-contains % values)
+        #(calc/count-contains % values)
         reference))
 
 (defn p-valued
@@ -32,8 +28,8 @@
                        (recur
                          (if (= 0 (first in-hand))
                            (* odds
-                              (- 4 (count-contains (first steps)
-                                                   (:values changed))))
+                              (- 4 (calc/count-contains (first steps)
+                                                        (:values changed))))
                            odds)
                          (rest in-hand)
                          (rest steps))))]

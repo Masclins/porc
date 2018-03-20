@@ -4,14 +4,15 @@
   (:gen-class))
 
 (defn p-valued
+  "Returns probability of a specific Double Pair given kept and changed cards"
   [hand changed value1 value2]
-  (let [in-hand1 (calc/count-value hand value1)
-        in-hand2 (calc/count-value hand value2)
+  (let [in-hand1 (calc/count-contains value1 hand)
+        in-hand2 (calc/count-contains value2 hand)
         needed1 (max (- 2 in-hand1) 0)
         needed2 (max (- 2 in-hand2) 0)
         draws (count changed)
-        in-deck1 (- 4 in-hand1 (calc/count-value changed value1))
-        in-deck2 (- 4 in-hand2 (calc/count-value changed value2))]
+        in-deck1 (- 4 in-hand1 (calc/count-contains value1 changed))
+        in-deck2 (- 4 in-hand2 (calc/count-contains value2 changed))]
     (if (or (> (+ needed1 needed2) draws)
             (> needed1 in-deck1)
             (> needed2 in-deck2))
@@ -22,6 +23,7 @@
          (precalc/comb47 draws)))))
 
 (defn p
+  "Returns probability of Double Pair given kept and changed cards"
   [hand changed]
   (loop [p 0
          value1 (range 13)]
@@ -38,6 +40,7 @@
         (rest value1)))))
 
 (defn p-pair-valued
+  "Returns probability of Double Pair with a specific Pair given kept and changed cards"
   [hand changed value1]
   (loop [p 0
          value2 (range 13)]

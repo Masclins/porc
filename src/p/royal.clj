@@ -21,6 +21,7 @@
         (rest suits)))))
 
 (defn p-suited
+  "Returns probability of Royal of specific suit given kept and changed cards"
   [hand changed suit]
   (let [in-hand (count-royals hand suit)
         needed (- 5 in-hand)
@@ -36,6 +37,7 @@
 
 
 (defn p
+  "Returns probability of Royal given kept and changed cards"
   [hand changed]
   (loop [p 0
          suit (range 4)]

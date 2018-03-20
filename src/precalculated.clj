@@ -1,6 +1,7 @@
 (ns precalculated)
 
 (def comb47
+  ; All 47Cx, since they are called A LOT
   [1
    47
    1081
@@ -9,6 +10,7 @@
    1533939])
 
 (def possiblehands
+  ; Possible combinations of cards kept and changed, by index
   [[[] [0 1 2 3 4]]
    [[0] [1 2 3 4]]
    [[1] [0 2 3 4]]

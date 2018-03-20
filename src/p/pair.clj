@@ -6,11 +6,12 @@
   (:gen-class))
 
 (defn p-valued
+  "Returns probability of specific Pair given kept and changed cards"
   [hand changed value]
-  (let [in-hand (calc/count-value hand value)
+  (let [in-hand (calc/count-contains value hand)
         needed (- 2 in-hand) 
         draws (count changed)
-        in-deck (- 4 in-hand (calc/count-value changed value))]
+        in-deck (- 4 in-hand (calc/count-contains value changed))]
     (if (or (> needed draws)
             (> needed in-deck))
       0
@@ -21,9 +22,11 @@
          (full/p-pair-valued hand changed value)))))
 
 (defn p
+  "Returns probability of Pair greater than min-value given kept and changed cards. 0 will always count. min-value must be > 0"
   ([hand changed]
+   ; Jacks or Better as default
     (p hand changed 10))
-  ([hand changed min-value] ; 0 is Ace and will always count
+   ([hand changed min-value]
     (loop [p 0
            value (concat [0] (range min-value 13))]
       (if (empty? value)

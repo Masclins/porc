@@ -15,6 +15,7 @@
 
 
 (defn find-rtp
+  "Returns expected payoff given kept and changed cards"
   [hand changed]
   (let [table game-def/prize-table]
     (+ (* (:royal table)    (royal/p hand changed))
@@ -28,6 +29,7 @@
        (* (:pair table)     (pair/p (:values hand) (:values changed))))))
 
 (defn find-best-rtp
+  "Returns expected payoff given a hand. It finds best changing option"
   [hand]
   (loop [rtp 0
          comb precalc/possiblehands]
