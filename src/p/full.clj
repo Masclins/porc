@@ -1,5 +1,5 @@
 (ns p.full
-  (:require [precalculated :as precalc]
+  (:require [precalc.combinations :as comb]
             [p.calc :as calc])
   (:gen-class))
 
@@ -22,7 +22,7 @@
           :else
           (/ (* (calc/C trio-in-deck trio-needed)
                 (calc/C pair-in-deck pair-needed))
-             (precalc/comb47 draws)))))
+             (comb/comb47 draws)))))
 
 (defn p-trio-valued
   "Returns probability of Full House with specific trio given kept and changed value of cards"

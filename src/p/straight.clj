@@ -1,5 +1,5 @@
 (ns p.straight
-  (:require [precalculated :as precalc]
+  (:require [precalc.combinations :as comb]
             [p.calc :as calc]
             [p.royal :as royal]
             [p.strflush :as strflush])
@@ -34,7 +34,7 @@
                          (rest in-hand)
                          (rest steps))))]
           (- (/ odds
-               (precalc/comb47 draws))
+               (comb/comb47 draws))
              (if royal
                (royal/p hand changed)
                (strflush/p-valued hand changed (first steps)))))))))

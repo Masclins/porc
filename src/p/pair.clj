@@ -1,5 +1,5 @@
 (ns p.pair
-  (:require [precalculated :as precalc]
+  (:require [precalc.combinations :as comb]
             [p.calc :as calc]
             [p.full :as full]
             [p.dpair :as dpair])
@@ -17,7 +17,7 @@
       0
       (- (/ (* (calc/C in-deck needed)
                (calc/C (- 47 in-deck) (- draws needed)))
-            (precalc/comb47 draws))
+            (comb/comb47 draws))
          (dpair/p-pair-valued hand changed value)
          (full/p-pair-valued hand changed value)))))
 

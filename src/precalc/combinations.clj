@@ -1,4 +1,4 @@
-(ns precalculated)
+(ns precalc.combinations)
 
 (def comb47
   ; All 47Cx, since they are called A LOT
