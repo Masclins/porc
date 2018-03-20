@@ -10,9 +10,9 @@ I recommend https://www.braveclojure.com/ and following their installation guide
 
 ## Usage
 
-FIXME: explanation
+For testing, use:
 
-    $ java -jar porc-0.1.0-standalone.jar [args]
+    $ lein test-refresh
 
 ## Options
 
