@@ -1,8 +1,11 @@
 (ns porc.core
+  (:require [rtp.calculator :as calc]
+            [rtp.generator :as gen])
   (:gen-class))
 
 (defn -main
-  "I don't do a whole lot ... yet."
+  "Gives the RTP for the current prize-table"
   [& args]
-  (println "Hello, World!"))
+  (println "Let's find this RTP...")
+  (println (calc/rtp gen/eq-hands)))
         
