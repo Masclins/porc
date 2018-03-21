@@ -1,0 +1,4 @@
+.sw[a-p]
+target
+.lein-repl-history
+.nrepl-port
