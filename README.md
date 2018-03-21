@@ -20,7 +20,7 @@ The program will solve paytables based on the typical prizes, in that orden of e
 
 ## License
 
-Copyright © 2018 Albert Masclans (under MIT Copyright)
+Copyright © 2018 Albert Masclans
+under MIT Copyright
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+
