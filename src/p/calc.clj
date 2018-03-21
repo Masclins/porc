@@ -11,4 +11,3 @@
   "Returns combinations xCy"
   [x y]
   (combo/count-combinations (range x) y))
-

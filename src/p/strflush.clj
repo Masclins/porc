@@ -4,20 +4,17 @@
   (:gen-class))
 
 (defn count-steps
+  "Counts how many steps of a straight are present
+  for a given set of cards, suit and start of sequence"
   [cards suit begin]
-  (loop [n 0
-         values (:values cards)
-         suits (:suits cards)]
-    (if (empty? values)
-      n
-      (recur
-        (if (and (= (first suits) suit)
-                 (>= (first values) begin)
-                 (<= (first values) (+ begin 4)))
-          (inc n)
-          n)
-        (rest values)
-        (rest suits)))))
+  (let [values (subvec [0 1 2 3 4 5 6 7 8 9 10 11 12 0]
+                       begin
+                       (+ 5 begin))]
+    (count
+      (filter
+        #(and (= (second %) suit)
+              (not= -1 (.indexOf values (first %))))
+        (map vector (:values cards) (:suits cards))))))
 
 (defn p-suited-valued
   "Returns probability of a specific Straight Flush given kept and changed cards"
@@ -25,44 +22,32 @@
   (let [in-hand (count-steps hand suit begin)
         needed (- 5 in-hand)
         draws (count (:values changed))]
-    (cond (= in-hand 5)
-          1
-          (or (> needed draws)
-              (> (count-steps changed suit begin) 0))
-          0
-          :else
-          (/ 1
-             (precalc/comb47 draws)))))
+    (cond
+      (= in-hand 5) 1
+      (or (> needed draws)
+          (> (count-steps changed suit begin) 0)) 0
+      :else (/ 1 (precalc/comb47 draws)))))
 
 (defn p-suited
   "Returns probability of Straight Flush of specific suit given kept and changed cards"
   [hand changed suit]
-  (loop [p 0
-         begin (range 9)]
-    (if (empty? begin)
-      p
-      (recur
-        (+ p (p-suited-valued hand changed suit (first begin)))
-        (rest begin)))))
+  (reduce
+    #(+ %1 (p-suited-valued hand changed suit %2))
+    0
+    (range 9)))
 
 (defn p-valued
   "Returns probability of Straight Flush starting at specific point given kept and changed cards"
   [hand changed begin]
-  (loop [p 0
-         suit (range 4)]
-    (if (empty? suit)
-      p
-      (recur
-        (+ p (p-suited-valued hand changed (first suit) begin))
-        (rest suit)))))
+  (reduce
+    #(+ %1 (p-suited-valued hand changed %2 begin))
+    0
+    (range 4)))
 
 (defn p
   "Returns probability of Straight Flush given kept and changed cards"
   [hand changed]
-  (loop [p 0
-         suit (range 4)]
-    (if (empty? suit)
-      p
-      (recur
-        (+ p (p-suited hand changed (first suit)))
-        (rest suit)))))
+  (reduce
+    #(+ %1 (p-suited hand changed %2))
+    0
+    (range 4)))
