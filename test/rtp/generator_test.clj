@@ -33,4 +33,9 @@
            (gen/merge-value-class [[0 0] [1 1]]
                                   {:suits [[13 13] [15 15]]
                                    :times [100 101]})))
-    (is (= 134459 (count gen/eq-hands)))))
+    (is (= 134459 (count gen/eq-hands))))
+  (testing "Some specific cases"
+    (is (= {:values [1 1 0 0 2] :suits [0 1 0 1 0] :times 12}
+           (nth gen/eq-hands 122837)))
+    (is (= {:values [0 0 0 5 5] :suits [0 1 2 0 3] :times 12}
+           (nth gen/eq-hands 134000)))))

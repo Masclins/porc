@@ -13,6 +13,6 @@
         (+ win
            (* (play/find-best-rtp {:values (:values (first eq-hands))
                                    :suits  (:suits  (first eq-hands))})
-              (:times (first eq-hands)))) 
+              (:times (first eq-hands))))
         (rest eq-hands)))))
 

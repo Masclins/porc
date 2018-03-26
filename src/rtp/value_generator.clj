@@ -67,10 +67,11 @@
                               (if (= (first a) (first d))
                                 hands
                                 (conj hands
-                                      (vec (conj (repeat 2 (first a))
-                                                 (first b)
-                                                 (first c)
-                                                 (first d)))))
+                                      [(first a)
+                                       (first a)
+                                       (first b)
+                                       (first c)
+                                       (first d)]))
                               (rest d)))))
                       (rest c)))))
               (rest b))))
@@ -96,9 +97,11 @@
                             (= (first b) (first c)))
                       hands
                       (conj hands
-                            (vec (conj (repeat 2 (first a))
-                                       (repeat 2 (first b))
-                                       (first c)))))
+                            [(first a)
+                             (first a)
+                             (first b)
+                             (first b)
+                             (first c)]))
                     (rest c))))
               (rest b))))
         (rest a)))))
@@ -124,9 +127,11 @@
                       (if (= (first a) (first c))
                         hands
                         (conj hands
-                              (vec (conj (repeat 3 (first a))
-                                         (first b)
-                                         (first c)))))
+                              [(first a)
+                               (first a)
+                               (first a)
+                               (first b)
+                               (first c)]))
                       (rest c)))))
               (rest b))))
         (rest a)))))
@@ -145,8 +150,11 @@
               (if (= (first a) (first b))
                 hands
                 (conj hands
-                      (vec (conj (repeat 3 (first a))
-                                 (repeat 2 (first b))))))
+                      [(first a)
+                       (first a)
+                       (first a)
+                       (first b)
+                       (first b)]))
               (rest b))))
         (rest a)))))
 
@@ -164,7 +172,10 @@
               (if (= (first a) (first b))
                 hands
                 (conj hands
-                      (vec (conj (repeat 4 (first a))
-                                 (first b)))))
+                      [(first a)
+                       (first a)
+                       (first a)
+                       (first a)
+                       (first b)]))
               (rest b))))
         (rest a)))))
