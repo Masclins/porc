@@ -24,20 +24,20 @@
     (is (= 25
            (play/find-best-rtp {:values [0 0 0 0 1]
                                 :suits  [0 1 2 3 1]})))
-    (is (let [rtp (play/find-best-rtp {:values [0 11 10 9 8]
-                                       :suits  [0 1 0 0 0]})]
-          (and (> rtp 1.276595) (< rtp 1.276597))))
-    (is (let [rtp (play/find-best-rtp {:values [5 6 10 5 12]
-                                       :suits  [0 1 1 2 0]})]
-          (and (> rtp 0.823681) (< rtp 0.823683))))
-    (is (let [rtp (play/find-best-rtp {:values [10 9 10 6 0]
-                                       :suits  [0 1 2 2 2]})]
-          (and (> rtp 1.536539) (< rtp 1.536541))))
-    (is (let [rtp (play/find-best-rtp {:values [1 2 5 7 12]
-                                       :suits  [0 1 2 3 0]})]
-          (and (> rtp 0.472401) (< rtp 0.472403))))
-    (is (let [rtp (play/find-best-rtp {:values [1 1 0 12 11]
-                                       :suits  [1 0 0 0 0]})]
-          (and (> rtp 1.386678) (< rtp 1.38668))))))
+    (is (= (/ 60 47)
+              (play/find-best-rtp {:values [0 11 10 9 8]
+                                   :suits  [0 1 0 0 0]})))
+    (is (= (/ 4452 5405)
+           (play/find-best-rtp {:values [5 6 10 5 12]
+                                :suits  [0 1 1 2 0]})))
+    (is (= (/ 1661 1081)
+           (play/find-best-rtp {:values [10 9 10 6 0]
+                                :suits  [0 1 2 2 2]})))
+    (is (= (/ 1532 3243)
+           (play/find-best-rtp {:values [1 2 5 7 12]
+                                :suits  [0 1 2 3 0]})))
+    (is (= (/ 1499 1081)
+           (play/find-best-rtp {:values [1 1 0 12 11]
+                                :suits  [1 0 0 0 0]})))))
     
     
