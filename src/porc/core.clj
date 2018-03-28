@@ -7,5 +7,5 @@
   "Gives the RTP for the current prize-table"
   [& args]
   (println "Let's find this RTP...")
-  (println (calc/rtp gen/eq-hands)))
+  (time (println (calc/rtp gen/eq-hands))))
         

@@ -30,6 +30,10 @@
            (royal/p {:values [] :suits []}
                     {:values [12 10 11 0 9]
                      :suits  [0 0 0 0 0]})))
+    (is (= (/ 3 1533939)
+           (royal/p {:values [] :suits []}
+                    {:values [2 1 1 2 9]
+                     :suits  [0 0 1 1 0]})))
     (is (= (/ 4 1533939)
            (royal/p {:values [] :suits []}
                     {:values [6 1 2 2 7]
